@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import { Link } from "react-router-dom";
 import {BACKEND} from '../constants';
 
 
@@ -29,12 +30,12 @@ function AllUsers(props){
         for(let i=0; i<players.length; i++){
             const player = players[i];
             const data = <tr key={player.id}>
-            <th scope="row">{i+1}</th>
-            <td>{player.id}</td>
+            <td>{i+1}</td   >
+            <td w>{player.id}</td>
             <td>{player.name}</td>
             <td>{player.highscore}</td>
             <td>
-                <a className='btn btn-primary' href={"/"+player.id}>Details</a>
+                <Link className="btn btn-primary" to={"/"+player.id}>Details</Link>
             </td>
             <td>
                 <button onClick={ ()=>{
