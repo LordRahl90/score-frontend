@@ -23,12 +23,24 @@ function Details(props){
                 },
                 body:JSON.stringify(payload)
             });
-            console.log(response);
-
+            alert("Score Updated Successfully");
+            reset();
         }
         catch(e){
             console.error(e);
         }
+    }
+
+    const getUser= async (id)=>{
+        const url=`${BACKEND}/user/${id}`;
+        const result = await fetch(url);
+        const content = await result.text();
+        return JSON.parse(content);
+    }
+
+    const reset = ()=>{
+        setName("")
+        setHighScore(0);
     }
 
     useEffect(()=>{
@@ -83,11 +95,5 @@ function Details(props){
             </div>
         </div>
     );
-}
-async function getUser(id){    
-    const url=`${BACKEND}/user/${id}`;
-    const result = await fetch(url);
-    const content = await result.text();
-    return JSON.parse(content);
 }
 export default Details;

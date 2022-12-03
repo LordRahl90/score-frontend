@@ -21,12 +21,12 @@ function Create(props){
                 },
                 body:JSON.stringify(postData)
             });
+            alert("Score Created Successfully");
             reset();
         }
         catch(e){
             alert(e.message);
-        }
-        
+        }        
     }
 
     const reset = ()=>{
