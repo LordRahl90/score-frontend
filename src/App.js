@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+
+import Layout from "./views/Layout";
+import AllUsers from "./views/AllUsers";
+import Create from "./views/Create";
+import Details from "./views/Details";
+
 
 function App() {
+  const id = useParams();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>      
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<AllUsers />} />
+            <Route path="create" element={<Create />} />
+            <Route path=":id" element={<Details id={id} />} />
+          </Route>
+        </Routes>
+     </BrowserRouter>
     </div>
   );
 }
