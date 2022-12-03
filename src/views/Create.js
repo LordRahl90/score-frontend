@@ -13,7 +13,7 @@ function Create(props){
         };
         const url = `${BACKEND}/user`;
         try{
-            const result = await fetch(url,{
+            await fetch(url,{
                 method: 'POST',
                 headers:{
                     'Accept':'application/json',

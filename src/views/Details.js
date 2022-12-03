@@ -15,7 +15,7 @@ function Details(props){
         };
         const url = `${BACKEND}/user/${id}`;
         try{
-            const response = await fetch(url,{
+            await fetch(url,{
                 method: 'PUT',
                 headers:{
                     'Accept':'application/json',

@@ -1,5 +1,4 @@
 import {useEffect, useState} from 'react';
-import { Redirect } from "react-router-dom";
 import {BACKEND} from '../constants';
 
 
@@ -51,10 +50,15 @@ function AllUsers(props){
 
     const deletePlayer = async (id)=> {
         const url=`${BACKEND}/user/${id}`;
-        const result = await fetch(url,{
-            method:"DELETE"
-        });
-        await getAllPlayers();
+        try{
+            await fetch(url,{
+                method:"DELETE"
+            });
+            await getAllPlayers();
+        }
+        catch(e){
+            alert(e.message);
+        }
     }
 
     useEffect(()=>{        
